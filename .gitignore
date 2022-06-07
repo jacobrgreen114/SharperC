@@ -1,7 +1,7 @@
 # Prerequisites
 *.d
 
-# Compiled Object files
+# Compiled _ArcObject files
 *.slo
 *.lo
 *.o
@@ -30,3 +30,26 @@
 *.exe
 *.out
 *.app
+
+
+# Output
+Out/
+Bin/
+Lib/
+
+# CMake
+**/.cmake
+**/CMakeFiles
+**/CMakeCache.txt
+**/cmake_install.cmake
+
+# Ninja
+**/build.ninja
+**/.ninja*
+
+# Clion
+**/.idea
+
+# VSCode
+**/.vscode
+**/compile_commands.json
