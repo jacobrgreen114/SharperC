@@ -1,7 +1,7 @@
 # Prerequisites
 *.d
 
-# Compiled _ArcObject files
+# Compiled Object files
 *.slo
 *.lo
 *.o

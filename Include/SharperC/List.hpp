@@ -5,26 +5,23 @@
 
 #include "Collections.hpp"
 
-template <typename T>
-class List : public virtual IArrayList<T> {
+template <typename T> class List : public virtual IArrayList<T> {
   std::vector<T> _vec;
 
- public:
+public:
   explicit List() : _vec() {}
 
   uintn Size() const override { return _vec.size(); }
 
-  uintn Add(const T& item) override { return _vec.push_back(item); }
+  uintn Add(const T &item) override { return _vec.push_back(item); }
 
-  T* Data() const override { return _vec.data(); }
+  T *Data() const override { return _vec.data(); }
 
-  static Pointer<List<T>> From(const Pointer<IEnumerable<T>>& enumerable);
+  static Pointer<List<T>> From(const Pointer<IEnumerable<T>> &enumerable);
 };
 
 template <typename T>
-Pointer<List<T>> List<T>::From(const Pointer<IEnumerable<T>>& enumerable) {
-  auto size = enumerable->Size();
-
+Pointer<List<T>> List<T>::From(const Pointer<IEnumerable<T>> &enumerable) {
   auto list = std::make_shared<List<T>>();
 
   for (auto enumerator = enumerable->GetEnumerator(); enumerator->MoveNext();) {

@@ -10,3 +10,5 @@ target_include_directories(SharperC
         Include
         )
 
+
+add_subdirectory(Test)
