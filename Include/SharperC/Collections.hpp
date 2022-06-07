@@ -34,7 +34,7 @@ class ICollection : public virtual IReadonlyCollection<T> {
 public:
   virtual ~ICollection() = default;
 
-  virtual uintn Add(const T &item) = 0;
+  virtual void Add(const T &item) = 0;
 };
 
 template <typename T>

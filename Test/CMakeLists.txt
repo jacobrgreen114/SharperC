@@ -12,7 +12,7 @@ enable_testing()
 
 add_executable(SharperC_Test
         Source/ArrayTest.cpp
-        )
+        Source/ListTest.cpp)
 
 target_link_libraries(SharperC_Test
         PRIVATE

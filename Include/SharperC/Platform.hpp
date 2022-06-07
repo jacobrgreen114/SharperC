@@ -15,22 +15,22 @@
 
 #if defined(__amd64__) || defined(__amd64) || defined(__x86_64__) || \
     defined(__x86_64) || defined(_M_X64) || defined(_M_AMD64)
-#define PointerH_X64 1
+#define ARCH_X64 1
 #elif defined(i386) || defined(__i386) || defined(__i386__) || \
     defined(_M_I86) || defined(_M_IX86)
-#define PointerH_X86 1
-#elif defined(__aPointerh64__)
-#define PointerH_ARM64 1
+#define ARCH_X86 1
+#elif defined(__aARCh64__)
+#define ARCH_ARM64 1
 #elif defined(__arm__) || defined(_M_ARM)
-#define PointerH_ARM32
+#define ARCH_ARM32
 #else
-#error Unknown target Pointerhitecture
+#error Unknown target ARChitecture
 #endif
 
-#if defined(PointerH_X64) || defined(PointerH_ARM64)
+#if defined(ARCH_X64) || defined(ARCH_ARM64)
 #define WORD_64BIT 1
 #define WORD_SIZE 64
-#elif defined(PointerH_X86) || defined(PointerH_ARM32)
+#elif defined(ARCH_X86) || defined(ARCH_ARM32)
 #define WORD_32BIT 1
 #define WORD_SIZE 32
 #else

@@ -13,9 +13,14 @@ public:
 
   uintn Size() const override { return _vec.size(); }
 
-  uintn Add(const T &item) override { return _vec.push_back(item); }
+  void Add(const T &item) override { return _vec.push_back(item); }
 
-  T *Data() const override { return _vec.data(); }
+  T *Data() const override { return const_cast<T *>(_vec.data()); }
+
+  T &At(intn index) const override { return Data()[index]; }
+
+
+  static Pointer<List<T>> New() { return new List<T>(); }
 
   static Pointer<List<T>> From(const Pointer<IEnumerable<T>> &enumerable);
 };
