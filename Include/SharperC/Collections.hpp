@@ -12,7 +12,7 @@ public:
   virtual ~IEnumerator() = default;
 
   virtual bool MoveNext() = 0;
-  virtual T &Current() const = 0;
+  virtual T& Current() const = 0;
   virtual void Reset() = 0;
 };
 
@@ -38,7 +38,7 @@ class IReadonlyCollection : public virtual IEnumerable<T> {
 public:
   virtual ~IReadonlyCollection() = default;
 
-  virtual bool Contains(const T &item) const;
+  virtual bool Contains(const T& item) const;
 };
 
 template <typename T>
@@ -46,7 +46,7 @@ class ICollection : public virtual IReadonlyCollection<T> {
 public:
   virtual ~ICollection() = default;
 
-  virtual void Add(const T &item) = 0;
+  virtual void Add(const T& item) = 0;
 };
 
 template <typename T>
@@ -66,8 +66,8 @@ class IReadonlyArrayList : public virtual IReadonlyList<T> {
 public:
   virtual ~IReadonlyArrayList() = default;
 
-  virtual T &At(intn index) const = 0;
-  virtual T *Data() const = 0;
+  virtual T& At(intn index) const = 0;
+  virtual T* Data() const = 0;
 
   Pointer<IEnumerator<T>> GetEnumerator() const override;
   class Enumerator;
@@ -80,7 +80,7 @@ class IArrayList : public virtual IReadonlyArrayList<T>,
 // Default Implementations
 
 template <typename T>
-bool IReadonlyCollection<T>::Contains(const T &item) const {
+bool IReadonlyCollection<T>::Contains(const T& item) const {
   auto enumerator = this->GetEnumerator();
   while (enumerator->MoveNext()) {
     if (enumerator->Current() == item)
@@ -95,18 +95,18 @@ class IReadonlyArrayList<T>::Enumerator : public virtual IEnumerator<T> {
   intn _index;
 
 public:
-  explicit Enumerator(IReadonlyArrayList<T> *list) : _list(list), _index(-1) {}
+  explicit Enumerator(IReadonlyArrayList<T>* list) : _list(list), _index(-1) {}
 
   virtual ~Enumerator() = default;
 
   bool MoveNext() override { return ++_index < _list->Size(); }
 
-  T &Current() const override { return _list->At(_index); }
+  T& Current() const override { return _list->At(_index); }
 
   void Reset() override { _index = -1; }
 };
 
 template <typename T>
 Pointer<IEnumerator<T>> IReadonlyArrayList<T>::GetEnumerator() const {
-  return new Enumerator(const_cast<IReadonlyArrayList<T> *>(this));
+  return new Enumerator(const_cast<IReadonlyArrayList<T>*>(this));
 }
