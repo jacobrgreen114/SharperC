@@ -2,8 +2,8 @@
 
 
 add_library(SharperC
-        Source/SharperC.cpp
-        )
+    Source/SharperC.cpp
+    Source/Timers.cpp)
 
 target_include_directories(SharperC
         PUBLIC
@@ -12,3 +12,4 @@ target_include_directories(SharperC
 
 
 add_subdirectory(Test)
+add_subdirectory(Benchmarks)

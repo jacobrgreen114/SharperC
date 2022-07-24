@@ -1,4 +1,7 @@
 
+// Copyright (c) 2022. Jacob R. Green
+// All Rights Reserved.
+
 #pragma once
 
 #include "ArcObject.hpp"
@@ -19,6 +22,15 @@ public:
 
   virtual uintn Size() const = 0;
   virtual Pointer<IEnumerator<T>> GetEnumerator() const = 0;
+
+  virtual T& First() const {
+    auto enumerator = this->GetEnumerator();
+    if (!enumerator->MoveNext()) {
+      throw std::exception("Enumerable is empty.");
+    }
+
+    return enumerator->Current();
+  }
 };
 
 template <typename T>

@@ -1,4 +1,7 @@
 
+// Copyright (c) 2022. Jacob R. Green
+// All Rights Reserved.
+
 #pragma once
 
 #if defined(_WIN32) || defined(_WIN64)
@@ -13,10 +16,10 @@
 #error Unknown operating system
 #endif
 
-#if defined(__amd64__) || defined(__amd64) || defined(__x86_64__) || \
+#if defined(__amd64__) || defined(__amd64) || defined(__x86_64__) ||           \
     defined(__x86_64) || defined(_M_X64) || defined(_M_AMD64)
 #define ARCH_X64 1
-#elif defined(i386) || defined(__i386) || defined(__i386__) || \
+#elif defined(i386) || defined(__i386) || defined(__i386__) ||                 \
     defined(_M_I86) || defined(_M_IX86)
 #define ARCH_X86 1
 #elif defined(__aARCh64__)
@@ -42,7 +45,7 @@
 #elif defined(__BIG_ENDIAN__) || defined(__ARMEB__)
 #define ENDIAN_BIG 1
 #else
-#error Unknown endianness
+//#error Unknown endianness
 #endif
 
 #if defined(__clang__)
@@ -58,3 +61,10 @@
 #if OS_WINDOWS
 #include <Windows.h>
 #endif
+
+#include <fstream>
+#include <future>
+#include <iostream>
+#include <mutex>
+#include <semaphore>
+#include <thread>
