@@ -2,6 +2,7 @@
 
 
 add_library(SharperC
+    STATIC
     Source/SharperC.cpp
     Source/Timers.cpp)
 
